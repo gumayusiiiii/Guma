@@ -1,0 +1,463 @@
+/* Base styles */
+body {
+    background-color: #0a0a0c;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Cinzel', serif;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(20,10,5,0.95));
+}
+
+#game-container {
+    width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: rgba(10, 8, 12, 0.95);
+    color: #c7baa7;
+    border: none;
+    box-shadow: 0 0 50px rgba(139, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Typography and Headers */
+.medieval-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5em;
+    text-align: center;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3),
+                 0 0 20px rgba(255, 215, 0, 0.2);
+    margin: 40px 0;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #ffd700 0%, #a67c00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced Story Text Container */
+.story-text, .task-text, .story-segment, .branch-intro {
+    background: linear-gradient(
+        to bottom,
+        rgba(30, 25, 35, 0.97) 0%,
+        rgba(20, 15, 25, 0.95) 100%
+    );
+    padding: 30px;
+    margin: 25px 0;
+    border: 2px solid #3a2820;
+    position: relative;
+    line-height: 1.8;
+    text-align: justify;
+    font-size: 1.1em;
+    color: #d4b887;
+    box-shadow: 
+        inset 0 0 20px rgba(139, 0, 0, 0.2),
+        0 0 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.7s ease-in-out;
+    overflow: hidden;
+}
+
+/* Story Container Holy Light Effect */
+.story-text::before,
+.task-text::before,
+.story-segment::before,
+.branch-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.3),
+        transparent
+    );
+    animation: shimmerTop 3s infinite;
+}
+
+/* Decorative Corner Elements */
+.story-text::before,
+.task-text::before,
+.story-segment::before,
+.branch-intro::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    border-top: 2px solid #ffd700;
+    border-left: 2px solid #ffd700;
+    width: 30px;
+    height: 30px;
+}
+
+.story-text::after,
+.task-text::after,
+.story-segment::after,
+.branch-intro::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    border-bottom: 2px solid #ffd700;
+    border-right: 2px solid #ffd700;
+    width: 30px;
+    height: 30px;
+}
+
+/* First Letter Styling */
+.story-text p:first-of-type::first-letter,
+.task-text p:first-of-type::first-letter,
+.story-segment p:first-of-type::first-letter,
+.branch-intro p:first-of-type::first-letter {
+    font-size: 3.5em;
+    float: left;
+    line-height: 1;
+    padding-right: 12px;
+    color: #ffd700;
+    font-family: 'Cinzel', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced Medieval Button */
+.medieval-btn {
+    background: linear-gradient(to bottom, rgba(139, 0, 0, 0.9), rgba(80, 0, 0, 0.9));
+    color: #d4b887;
+    padding: 20px 40px;
+    border: 1px solid #3a2820;
+    font-family: 'Cinzel', serif;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 10px rgba(212, 184, 135, 0.3);
+}
+
+/* Holy Light Button Effects */
+.medieval-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
+    animation: rotateLight 4s linear infinite;
+}
+
+.medieval-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.2),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+/* Enhanced Option Buttons */
+.option-btn {
+    width: 100%;
+    margin: 12px 0;
+    text-align: left;
+    padding: 15px 50px 15px 25px;
+    background: linear-gradient(to right, rgba(139, 0, 0, 0.9), rgba(80, 0, 0, 0.9));
+    color: #d4b887;
+    border: 1px solid #3a2820;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.2),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+.option-btn::after {
+    content: "»";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    color: #d4b887;
+}/* DND Characters */
+.dnd-characters {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.character-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    opacity: 0.25;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.2));
+}
+
+/* Character Positions */
+.wizard-decoration {
+    top: 80px;
+    right: 40px;
+    animation: floatCharacter 6s ease-in-out infinite, magicPulse 4s ease-in-out infinite;
+}
+
+.death-knight-decoration {
+    bottom: 100px;
+    left: 40px;
+    animation: floatCharacter 5s ease-in-out infinite, deathPulse 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.3));
+}
+
+.barbarian-decoration {
+    top: 150px;
+    left: 60px;
+    animation: floatCharacter 4s ease-in-out infinite, rageShake 8s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(255, 69, 0, 0.2));
+}
+
+.rogue-decoration {
+    bottom: 150px;
+    right: 60px;
+    animation: shiftCharacter 7s ease-in-out infinite, stealthFade 10s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(75, 0, 130, 0.2));
+}
+
+.paladin-decoration {
+    top: 200px;
+    right: 100px;
+    animation: floatCharacter 5.5s ease-in-out infinite, holyPulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+}
+
+/* Enhanced Selection Group */
+.selection-group {
+    margin: 25px 0;
+    position: relative;
+}
+
+.selection-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #d4b887;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(212, 184, 135, 0.3);
+}
+
+.selection-group select {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to bottom, rgba(30, 25, 35, 0.95), rgba(20, 15, 25, 0.95));
+    color: #ffd700;
+    border: 1px solid #3a2820;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selection-group select option {
+    background-color: rgba(20, 15, 25, 0.95);
+    color: #ffd700;
+    padding: 10px;
+}
+
+.selection-group::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    color: #ffd700;
+    pointer-events: none;
+    font-size: 0.8em;
+}
+
+/* Character Auras */
+.magic-aura, .death-aura, .rage-aura, .stealth-aura, .holy-aura {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.magic-aura {
+    background: radial-gradient(circle, rgba(106, 90, 205, 0.2) 0%, transparent 70%);
+    animation: magicPulse 3s ease-in-out infinite;
+}
+
+.death-aura {
+    background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
+    animation: deathPulse 3s ease-in-out infinite;
+}
+
+.rage-aura {
+    background: radial-gradient(circle, rgba(255, 69, 0, 0.15) 0%, transparent 70%);
+    animation: ragePulse 3s ease-in-out infinite;
+}
+
+.stealth-aura {
+    background: radial-gradient(circle, rgba(75, 0, 130, 0.15) 0%, transparent 70%);
+    animation: stealthFade 4s ease-in-out infinite;
+}
+
+.holy-aura {
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+    animation: holyPulse 3s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.medieval-btn:hover,
+.option-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.2),
+        0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+.medieval-btn:hover::before {
+    animation: rotateLight 2s linear infinite;
+}
+
+.selection-group select:hover {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Active States */
+.medieval-btn:active,
+.option-btn:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.2),
+        0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+/* Focus States */
+.medieval-btn:focus,
+.option-btn:focus,
+.selection-group select:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 
+        0 0 0 2px rgba(255, 215, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Animation Keyframes */
+@keyframes rotateLight {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes shimmerTop {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatCharacter {
+    0%, 100% { transform: translateY(0); opacity: 0.25; }
+    50% { transform: translateY(-10px); opacity: 0.3; }
+}
+
+@keyframes magicPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(5deg); }
+}
+
+@keyframes deathPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); filter: hue-rotate(30deg); }
+}
+
+@keyframes rageShake {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+@keyframes stealthFade {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.1; }
+}
+
+@keyframes holyPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); filter: brightness(1.2); }
+}
+
+@keyframes shiftCharacter {
+    0%, 100% { transform: translateX(0); opacity: 0.2; }
+    50% { transform: translateX(-10px); opacity: 0.1; }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(20, 15, 25, 0.95);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(139, 0, 0, 0.8);
+    border: 2px solid rgba(20, 15, 25, 0.95);
+}

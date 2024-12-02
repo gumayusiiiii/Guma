@@ -1,0 +1,1 @@
+9999999999{"name": "api", "version": "0.0.7", "summary": "Consume an API from ReadMe Build", "requires_dist": ["requests", "nose"], "requires_python": null, "files": [{"file": "api-0.0.7.tar.gz", "hash": "sha256:ef1a7d9122c76edf9dc28edd3acfbb56f919194b609191481efc12e9ef83a68d"}], "yanked": false, "_cache_version": "2.0.0"}

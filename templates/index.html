@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your DND</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="game-container">
+        <h1 class="medieval-title">Your DND</h1>
+
+        <!-- DND角色装饰 -->
+        <div class="dnd-characters">
+            <!-- 法师 -->
+            <div class="character-decoration wizard-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+                    <!-- 法师主体 -->
+                    <g class="mage-body">
+                        <!-- 长袍 -->
+                        <path d="M40,50 L60,50 L65,90 L35,90" fill="#4A238D">
+                            <animate attributeName="d" 
+                                values="M40,50 L60,50 L65,90 L35,90;
+                                       M40,50 L60,50 L67,90 L33,90;
+                                       M40,50 L60,50 L65,90 L35,90" 
+                                dur="2s" 
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 法师帽 -->
+                        <path d="M35,45 L65,45 L50,20" fill="#32174D">
+                            <animate attributeName="d"
+                                values="M35,45 L65,45 L50,20;
+                                       M33,45 L67,45 L50,18;
+                                       M35,45 L65,45 L50,20"
+                                dur="2s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- Staff of Power -->
+                        <g transform="translate(65,35)">
+                            <rect x="0" y="5" width="4" height="60" fill="#8B4513"/>
+                            <path d="M-3,-2 L7,2 L-3,6 L1,2 Z" fill="#7DF9FF">
+                                <animate attributeName="fill"
+                                    values="#7DF9FF;#00FFFF;#7DF9FF"
+                                    dur="1s"
+                                    repeatCount="indefinite"/>
+                                <animate attributeName="transform"
+                                    type="rotate"
+                                    values="0 2 2; 360 2 2"
+                                    dur="3s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+
+                        <!-- 魔法效果 -->
+                        <g class="magic-effects">
+                            <circle cx="50" cy="60" r="25" fill="none" stroke="#9B30FF" stroke-width="1" opacity="0.3">
+                                <animate attributeName="r" values="25;30;25" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <g transform="translate(50,40)">
+                                <circle cx="0" cy="0" r="1" fill="#9B30FF">
+                                    <animate attributeName="r" values="1;2;1" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="5" cy="-5" r="1" fill="#7DF9FF">
+                                    <animate attributeName="r" values="1;2;1" dur="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- 死亡骑士 -->
+            <div class="character-decoration death-knight-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+                    <!-- 骷髅主体 -->
+                    <g class="skeleton-body">
+                        <path d="M45,40 L55,40 L60,90 L40,90" fill="#2F2F2F">
+                            <animate attributeName="d"
+                                values="M45,40 L55,40 L60,90 L40,90;
+                                       M43,40 L57,40 L62,90 L38,90;
+                                       M45,40 L55,40 L60,90 L40,90"
+                                dur="0.5s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 骷髅细节 -->
+                        <path d="M45,35 L55,35 L53,45 L47,45 Z" fill="#E0E0E0">
+                            <animate attributeName="transform"
+                                type="rotate"
+                                values="-2 50 40; 2 50 40; -2 50 40"
+                                dur="1s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 发光的眼睛 -->
+                        <circle cx="47" cy="40" r="1" fill="#FF0000">
+                            <animate attributeName="opacity"
+                                values="1;0.5;1"
+                                dur="2s"
+                                repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="53" cy="40" r="1" fill="#FF0000">
+                            <animate attributeName="opacity"
+                                values="1;0.5;1"
+                                dur="2s"
+                                repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- 符文剑 -->
+                        <g transform="translate(60,50)">
+                            <path d="M0,0 L25,-10" stroke="#A0A0A0" stroke-width="3">
+                                <animate attributeName="transform"
+                                    type="rotate"
+                                    values="0 0 0; 10 0 0; 0 0 0"
+                                    dur="1.2s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                            <!-- 符文特效 -->
+                            <path d="M10,-5 L15,-7 L10,-9" stroke="#FF0000" stroke-width="1" fill="none">
+                                <animate attributeName="opacity"
+                                    values="1;0;1"
+                                    dur="1s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+
+                    <!-- 死亡光环 -->
+                    <circle cx="50" cy="65" r="30" fill="none" stroke="#660000" stroke-width="2">
+                        <animate attributeName="opacity"
+                            values="0.3;0.1;0.3"
+                            dur="1.5s"
+                            repeatCount="indefinite"/>
+                        <animate attributeName="r"
+                            values="30;32;30"
+                            dur="1.5s"
+                            repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+            </div>
+
+            <!-- 野蛮人 -->
+            <div class="character-decoration barbarian-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+                    <!-- 野蛮人主体 -->
+                    <g class="barbarian-body">
+                        <path d="M40,45 L60,45 L65,95 L35,95" fill="#8B4513">
+                            <animate attributeName="d"
+                                values="M40,45 L60,45 L65,95 L35,95;
+                                       M38,45 L62,45 L67,95 L33,95;
+                                       M40,45 L60,45 L65,95 L35,95"
+                                dur="0.6s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 盔甲 -->
+                        <path d="M42,50 L58,50 L60,90 L40,90" fill="#A0522D">
+                            <animate attributeName="d"
+                                values="M42,50 L58,50 L60,90 L40,90;
+                                       M40,50 L60,50 L62,90 L38,90;
+                                       M42,50 L58,50 L60,90 L40,90"
+                                dur="0.6s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 狂暴效果 -->
+                        <g class="rage-effect">
+                            <circle cx="50" cy="60" r="25" fill="none" stroke="#FF4500" stroke-width="2">
+                                <animate attributeName="opacity"
+                                    values="0.3;0.1;0.3"
+                                    dur="0.6s"
+                                    repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+
+                        <!-- 战斧 -->
+                        <g transform="translate(65,50)">
+                            <path d="M0,0 L20,-10 L15,5" fill="#808080">
+                                <animate attributeName="transform"
+                                    type="rotate"
+                                    values="-5 0 0; 5 0 0; -5 0 0"
+                                    dur="0.6s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- 盗贼 -->
+            <div class="character-decoration rogue-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+                    <!-- 盗贼主体 -->
+                    <g class="rogue-body">
+                        <path d="M40,40 L60,40 L65,90 L35,90" fill="#2C2C2C">
+                            <animate attributeName="d"
+                                values="M40,40 L60,40 L65,90 L35,90;
+                                       M38,40 L62,40 L67,90 L33,90;
+                                       M40,40 L60,40 L65,90 L35,90"
+                                dur="1.5s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 隐身效果 -->
+                        <g class="stealth-effect">
+                            <circle cx="50" cy="65" r="30" fill="none" stroke="#4B0082" stroke-width="1">
+                                <animate attributeName="opacity"
+                                    values="0.2;0;0.2"
+                                    dur="2s"
+                                    repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+
+                        <!-- 匕首 -->
+                        <g transform="translate(60,50)">
+                            <path d="M0,0 L10,-5" stroke="#Silver" stroke-width="2">
+                                <animate attributeName="transform"
+                                    type="rotate"
+                                    values="0 0 0; 30 0 0; 0 0 0"
+                                    dur="1s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- 圣骑士 -->
+            <div class="character-decoration paladin-decoration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150">
+                    <!-- 圣骑士主体 -->
+                    <g class="paladin-body">
+                        <path d="M40,40 L60,40 L65,90 L35,90" fill="#C0C0C0">
+                            <animate attributeName="d"
+                                values="M40,40 L60,40 L65,90 L35,90;
+                                       M38,40 L62,40 L67,90 L33,90;
+                                       M40,40 L60,40 L65,90 L35,90"
+                                dur="2s"
+                                repeatCount="indefinite"/>
+                        </path>
+
+                        <!-- 神圣光环 -->
+                        <circle cx="50" cy="65" r="30" fill="none" stroke="#FFD700" stroke-width="2">
+                            <animate attributeName="opacity"
+                                values="0.3;0.1;0.3"
+                                dur="2s"
+                                repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- 圣剑 -->
+                        <g transform="translate(60,50)">
+                            <path d="M0,0 L20,-10" stroke="#FFD700" stroke-width="3">
+                                <animate attributeName="transform"
+                                    type="rotate"
+                                    values="-5 0 0; 5 0 0; -5 0 0"
+                                    dur="2s"
+                                    repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 原有的龙的装饰 -->
+        <div class="dragon-decoration">
+            <!-- 原有的龙SVG代码 -->
+        </div>
+
+        <div id="main-menu">
+            <button id="start-game" class="medieval-btn">Start</button>
+        </div>
+        <div id="game-board">
+            <!-- Game content will be loaded here -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
